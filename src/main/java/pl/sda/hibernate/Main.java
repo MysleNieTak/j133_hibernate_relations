@@ -1,7 +1,13 @@
 package pl.sda.hibernate;
 
+import pl.sda.hibernate.model.HibernateUtil;
+
 public class Main {
+
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+
+        HibernateUtil.INSTANCE.getSessionFactory().openSession();
+
     }
+
 }
