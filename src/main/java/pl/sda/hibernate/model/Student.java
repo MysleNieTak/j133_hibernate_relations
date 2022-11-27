@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Formula;
+
+import java.util.Set;
 
 @Data
 @Entity
@@ -25,8 +28,14 @@ public class Student {
     // @Column(nullable = false)
     private int rokRozpoczeciaStiudiow;
 
-    // nie chcemy, aby to była kolumna (nie chcemy, żeby to co było wyliczalne było w kolumnnie)
-    private double sredniaOcen;
+    //    nie chcemy, aby to była kolumna
+    @Formula("(SELECT AVG(o.wartosc) FROM ocena o WHERE o.uczen_id=id)")
+    private Double sredniaOcen;
+
+
+    @OneToMany(mappedBy = "uczen") // uczen, to nie jest nazwa klasy, a nazwa pola
+    private Set<Ocena> oceny;
+
 
 
 

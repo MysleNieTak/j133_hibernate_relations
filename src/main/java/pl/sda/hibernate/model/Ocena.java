@@ -27,5 +27,9 @@ public class Ocena {
     @CreationTimestamp // odpowiednik QQL funckcja: now()
     private LocalDateTime dataCzasDodania;
 
+    // RELACJE
+    @ManyToOne
+    private Student uczen; // kolumna student_id
+
 
 }

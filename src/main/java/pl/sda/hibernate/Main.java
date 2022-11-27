@@ -8,6 +8,7 @@ public class Main {
 
         HibernateUtil.INSTANCE.getSessionFactory().openSession();
 
-    }
 
+
+    }
 }
