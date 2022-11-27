@@ -1,10 +1,7 @@
 package pl.sda.hibernate.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.Formula;
 
 import java.util.Set;
@@ -32,7 +29,8 @@ public class Student {
     @Formula("(SELECT AVG(o.wartosc) FROM ocena o WHERE o.uczen_id=id)")
     private Double sredniaOcen;
 
-
+    @ToString.Exclude // łamie infinity loop
+    @EqualsAndHashCode.Exclude // zawsze przy Set
     @OneToMany(mappedBy = "uczen") // uczen, to nie jest nazwa klasy, a nazwa pola
     private Set<Ocena> oceny;
 

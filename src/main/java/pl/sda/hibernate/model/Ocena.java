@@ -27,6 +27,9 @@ public class Ocena {
     @CreationTimestamp // odpowiednik QQL funckcja: now()
     private LocalDateTime dataCzasDodania;
 
+    @Enumerated(value = EnumType.STRING)
+    private Przedmiot przedmiot;
+
     // RELACJE
     @ManyToOne
     private Student uczen; // kolumna student_id
